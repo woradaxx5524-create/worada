@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Worada | Your Friendly Vet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&family=Mitr:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FDF9F3; /* ขาวนวล */
+            --card-white: #FFFFFF;
+            --primary-brown: #6D4C41; /* น้ำตาลเข้ม */
+            --accent-brown: #A1887F; /* น้ำตาลอ่อน */
+            --warm-highlight: #F5EBE0;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--bg-color);
+            color: #4E342E;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* ส่วนหัวที่ดูเป็นมิตร */
+        .header {
+            background-color: var(--warm-highlight);
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 40px; /* ทรงมนๆ ไม่กลมสนิทจะดูโมเดิร์นกว่า */
+            object-fit: cover;
+            border: 6px solid white;
+            box-shadow: 0 10px 20px rgba(109, 76, 65, 0.15);
+        }
+
+        .status-badge {
+            position: absolute;
+            bottom: 10px;
+            right: -10px;
+            background: #81C784;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        h1 { font-family: 'Mitr', sans-serif; color: var(--primary-brown); margin: 20px 0 5px 0; font-size: 2.2em; }
+        .sub-title { font-size: 1.1em; color: var(--accent-brown); margin-bottom: 20px; font-weight: 400; }
+
+        /* การจัดหน้าแบบ Card */
+        .container {
+            max-width: 700px;
+            margin: -30px auto 50px auto;
+            padding: 0 20px;
+        }
+
+        .info-card {
+            background: var(--card-white);
+            padding: 35px;
+            border-radius: 30px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.03);
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.3em;
+            color: var(--primary-brown);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px dashed var(--warm-highlight);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: var(--warm-highlight);
+            color: var(--primary-brown);
+            padding: 8px 18px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: 400;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0 0;
+        }
+
+        .contact-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .highlight-text {
+            color: var(--primary-brown);
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 20px 50px 20px;
+            color: var(--accent-brown);
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="profile-wrapper">
+            <img src="myprofile.jpg" alt="คุณหมอวรดา" class="profile-img">
+            <span class="status-badge">เชี่ยวชาญ 7+ ปี</span>
+        </div>
+        <h1>สพ.ญ. วรดา เหล็กยัง</h1>
+        <div class="sub-title">รหัสแพทย์: 6650101419</div>
+    </div>
+
+    <div class="container">
+        <div class="info-card">
+            <h2>🐾 สวัสดีค่ะ หมอวรดานะคะ</h2>
+            <p>หมอเชื่อว่าสัตว์เลี้ยงคือสมาชิกในครอบครัวค่ะ ด้วยประสบการณ์กว่า 7 ปีในโรงพยาบาลสัตว์ หมอจึงมุ่งเน้นการรักษาที่นุ่มนวลและแม่นยำ เพื่อให้เด็กๆ กลับไปร่าเริงได้เร็วที่สุด ยินดีที่ได้ดูแลทุกคนค่ะ</p>
+        </div>
+
+        <div class="info-card">
+            <h2>✨ ความชำนาญการ</h2>
+            <div class="skills-container">
+                <span class="tag">ศัลยกรรมเนื้อเยื่ออ่อน</span>
+                <span class="tag">อายุรกรรมโรคแมว</span>
+                <span class="tag">โภชนาการสัตว์เลี้ยง</span>
+                <span class="tag">การแปลผล Lab</span>
+                <span class="tag">ตรวจสุขภาพเชิงป้องกัน</span>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2>🏥 ประวัติการทำงาน</h2>
+            <ul class="contact-list">
+                <li>
+                    <span>📍</span>
+                    <div><span class="highlight-text">2019 - ปัจจุบัน:</span> สัตวแพทย์อาวุโส แผนกศัลยกรรม</div>
+                </li>
+                <li>
+                    <span>📍</span>
+                    <div><span class="highlight-text">2017 - 2019:</span> สัตวแพทย์ประจำบ้าน (Resident)</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        ออกแบบเพื่อดูแลเพื่อนสี่ขาโดยคุณหมอวรดา <br>
+        &copy; 2026 Veterinary Professional Profile
+    </footer>
+
+</body>
+</html>
