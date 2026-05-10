@@ -4,179 +4,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Worada | Your Friendly Vet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&family=Mitr:wght@300;400&display=swap" rel="stylesheet">
+    <title>สพ.ญ. วรดา เหล็กยัง | หมอวรดาผู้ใจดี</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pridi:wght@400;600&family=Sriracha&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
         :root {
-            --bg-color: #FDF9F3; /* ขาวนวล */
-            --card-white: #FFFFFF;
-            --primary-brown: #6D4C41; /* น้ำตาลเข้ม */
-            --accent-brown: #A1887F; /* น้ำตาลอ่อน */
-            --warm-highlight: #F5EBE0;
+            /* Palette สีใหม่: สดใส ร่าเริง แต่ยังดูโปร */
+            --bg-playful-cream: #FFFDF0; /* ครีมเหลืองนวลอ่อนๆ */
+            --primary-sunny: #FFD369; /* เหลืองซันนี่ (อบอุ่น สนุก) */
+            --secondary-mint: #9EDF9C; /* เขียวมินต์ (สดชื่น ปลอดภัย) */
+            --accent-coral: #EE9E92; /* ส้มคอรัล (เป็นมิตร มีสีสัน) */
+            --dark-choco: #4B3621; /* น้ำตาลเข้มสำหรับตัวอักษร */
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Kanit', sans-serif;
-            background-color: var(--bg-color);
-            color: #4E342E;
-            margin: 0;
-            padding: 0;
+            font-family: 'Sriracha', cursive; /* ฟอนต์แนวการ์ตูน */
+            background-color: var(--bg-playful-cream);
+            color: var(--dark-choco);
             line-height: 1.6;
-        }
-
-        /* ส่วนหัวที่ดูเป็นมิตร */
-        .header {
-            background-color: var(--warm-highlight);
-            text-align: center;
-            padding: 60px 20px;
-            border-bottom-left-radius: 50px;
-            border-bottom-right-radius: 50px;
-        }
-
-        .profile-wrapper {
+            overflow-x: hidden; /* ป้องกันแถบเลื่อนด้านข้าง */
             position: relative;
-            display: inline-block;
+        }
+
+        /* --- สวนสัตว์การ์ตูนดุ๊กดิ๊ก (Animated Pets) --- */
+        .animated-pet {
+            position: fixed;
+            z-index: 1; /* ให้อยู่ข้างหลังเนื้อหา */
+            pointer-events: none; /* ห้ามให้คลิกโดน */
+            filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.1));
+        }
+
+        /* ตัวอย่าง 1: น้องหมาโผล่มามุมซ้ายบน */
+        #peeking-dog {
+            width: 120px;
+            top: 20px;
+            left: -30px;
+            transform: rotate(-15deg);
+        }
+
+        /* ตัวอย่าง 2: น้องแมววิ่งมุมล่างขวา */
+        #running-cat {
+            width: 100px;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        /* ตัวอย่าง 3: นกกระโดดไปมา (ใช้ CSS Animation) */
+        .hopping-bird {
+            width: 50px;
+            bottom: 150px;
+            left: 50px;
+            animation: hopPet 4s ease-in-out infinite;
+        }
+
+        @keyframes hopPet {
+            0%, 100% { transform: translateY(0); }
+            20% { transform: translateY(-50px) rotate(15deg); }
+            40% { transform: translateY(0); }
+            60% { transform: translateY(-30px) rotate(-15deg); }
+            80% { transform: translateY(0); }
+        }
+
+        /* ตัวอย่าง 4: ตัววิ่งผ่านหน้าจอแบบเร็ว (ใช้ CSS Animation) */
+        .scrolling-bunny {
+            position: absolute;
+            width: 70px;
+            top: 500px; /* ตำแหน่งแนวตั้ง */
+            z-index: 1;
+            animation: scrollPet 15s linear infinite;
+        }
+
+        @keyframes scrollPet {
+            from { left: -100px; transform: scaleX(1); }
+            to { left: 100vw; transform: scaleX(1); }
+        }
+
+        /* --- Layout Design --- */
+        header {
+            background-color: var(--primary-sunny);
+            padding: 80px 20px;
+            text-align: center;
+            color: var(--white);
+            clip-path: ellipse(150% 100% at 50% 0%);
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
         }
 
         .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 40px; /* ทรงมนๆ ไม่กลมสนิทจะดูโมเดิร์นกว่า */
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 8px solid var(--white);
             object-fit: cover;
-            border: 6px solid white;
-            box-shadow: 0 10px 20px rgba(109, 76, 65, 0.15);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        .status-badge {
-            position: absolute;
-            bottom: 10px;
-            right: -10px;
-            background: #81C784;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            font-weight: 500;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        header h1 {
+            font-family: 'Pridi', serif;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: var(--white);
         }
 
-        h1 { font-family: 'Mitr', sans-serif; color: var(--primary-brown); margin: 20px 0 5px 0; font-size: 2.2em; }
-        .sub-title { font-size: 1.1em; color: var(--accent-brown); margin-bottom: 20px; font-weight: 400; }
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
 
-        /* การจัดหน้าแบบ Card */
+        /* Main Content */
         .container {
-            max-width: 700px;
-            margin: -30px auto 50px auto;
+            max-width: 900px;
+            margin: -40px auto 60px;
             padding: 0 20px;
+            position: relative;
+            z-index: 2; /* ให้อยู่เหนือสัตว์ดุ๊กดิ๊กพื้นหลัง */
         }
 
-        .info-card {
-            background: var(--card-white);
-            padding: 35px;
-            border-radius: 30px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.03);
-            margin-bottom: 20px;
+        section {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px); /* ให้พื้นหลัง Section ใสๆ ทะลุเห็นสัตว์วิ่ง */
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(75, 54, 33, 0.05);
+            border: 1px solid rgba(210, 180, 140, 0.2);
         }
 
         h2 {
-            font-size: 1.3em;
-            color: var(--primary-brown);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 2px dashed var(--warm-highlight);
-            padding-bottom: 10px;
-            margin-top: 0;
+            font-family: 'Pridi', serif;
+            font-size: 1.9rem;
+            margin-bottom: 25px;
+            border-left: 6px solid var(--secondary-mint);
+            padding-left: 15px;
+            color: var(--dark-choco);
         }
 
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
+        /* Experience Tables & Skills */
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
         }
 
-        .tag {
-            background: var(--warm-highlight);
-            color: var(--primary-brown);
-            padding: 8px 18px;
+        .skill-card {
+            background: var(--bg-playful-cream);
+            padding: 20px;
             border-radius: 15px;
-            font-size: 0.9em;
-            font-weight: 400;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 2px dashed var(--accent-coral);
         }
 
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--accent-coral);
+            margin-bottom: 15px;
+        }
+
+        .skill-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Philosophy & Education */
+        .quote {
+            font-style: italic;
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--dark-choco);
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 15px;
+            border: 2px solid var(--primary-sunny);
+        }
+
+        .edu-item {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .edu-item::before {
+            content: '🌸'; /* เพิ่มความมีสีสันแทน paw print */
+            position: absolute;
+            left: 0;
+            color: var(--accent-coral);
+        }
+
+        /* Contact Info */
         .contact-list {
             list-style: none;
-            padding: 0;
-            margin: 15px 0 0 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
         }
 
         .contact-list li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
+            margin: 10px;
+            font-weight: 600;
         }
 
-        .highlight-text {
-            color: var(--primary-brown);
-            font-weight: 500;
+        .contact-list i {
+            color: var(--secondary-mint);
+            margin-right: 10px;
         }
 
         footer {
             text-align: center;
-            padding: 20px 20px 50px 20px;
-            color: var(--accent-brown);
-            font-size: 0.85em;
+            padding: 40px;
+            color: var(--dark-choco);
+            font-size: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            section { padding: 25px; }
+            .skill-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <div class="profile-wrapper">
-            <img src="myprofile.jpg" alt="คุณหมอวรดา" class="profile-img">
-            <span class="status-badge">เชี่ยวชาญ 7+ ปี</span>
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZW1hZDBwNmxjNTd5NjFqdXpwazh4Z3ZqZWl4ZmtzZnJ6NHdwemlpaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/8gqYQAn25H1661M076/giphy.gif" class="animated-pet" id="peeking-dog" alt="peeking-dog">
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzRiaGpxcGJqaXkwaHFpNWQybTN3Z3NjZXE2NHA0ZDJxZ2Nodm9reSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJMzk5Na4WfX99iMa/giphy.gif" class="animated-pet" id="running-cat" alt="running-cat">
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbm5vNXV6YXBqaWZ4Z3YyZDNzNDM5bXp1YWRiNWYwaWlreHF2Z2RyaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/26FL8pXqXq6vYl5zG/giphy.gif" class="animated-pet hopping-bird" alt="hopping-bird">
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbm5vNXV6YXBqaWZ4Z3YyZDNzNDM5bXp1YWRiNWYwaWlreHF2Z2RyaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3o7TKSj0CDb5lWp85S/giphy.gif" class="animated-pet scrolling-bunny" alt="scrolling-bunny">
+
+    <header>
+        <div class="profile-container">
+            <img src="https://storage.googleapis.com/pai-images/17eb66a7e089456897793d56a73a388b.jpeg" alt="สพ.ญ. วรดา เหล็กยัง" class="profile-img">
         </div>
-        <h1>สพ.ญ. วรดา เหล็กยัง</h1>
-        <div class="sub-title">รหัสแพทย์: 6650101419</div>
-    </div>
+        <h1>หมอวรดาผู้ใจดี🐾</h1>
+        <p>คุณหมอสัตวแพทย์ผู้เชี่ยวชาญ | เลขทะเบียน: 6650101419</p>
+    </header>
 
     <div class="container">
-        <div class="info-card">
-            <h2>🐾 สวัสดีค่ะ หมอวรดานะคะ</h2>
-            <p>หมอเชื่อว่าสัตว์เลี้ยงคือสมาชิกในครอบครัวค่ะ ด้วยประสบการณ์กว่า 7 ปีในโรงพยาบาลสัตว์ หมอจึงมุ่งเน้นการรักษาที่นุ่มนวลและแม่นยำ เพื่อให้เด็กๆ กลับไปร่าเริงได้เร็วที่สุด ยินดีที่ได้ดูแลทุกคนค่ะ</p>
-        </div>
+        <section>
+            <h2>🏥 รู้จักกับหมอวรดา</h2>
+            <p><strong>ประสบการณ์:</strong> ความชำนาญการด้านอายุรกรรมและศัลยกรรมสัตว์เล็ก มากกว่า 7 ปี</p>
+            <p><strong>ความสนใจ:</strong> โรคหัวใจ และการผ่าตัดแผลเล็ก</p>
+            <p style="margin-top: 15px;">ด้วยประสบการณ์ในโรงพยาบาลสัตว์ชั้นนำ หมอวรดาผ่านการดูแลเคสที่ซับซ้อนมาแล้วมากมาย โดยมุ่งเน้นการรักษาที่มีประสิทธิภาพและถนอมร่างกายสัตว์เลี้ยงให้มากที่สุดครับ</p>
+        </section>
 
-        <div class="info-card">
-            <h2>✨ ความชำนาญการ</h2>
-            <div class="skills-container">
-                <span class="tag">ศัลยกรรมเนื้อเยื่ออ่อน</span>
-                <span class="tag">อายุรกรรมโรคแมว</span>
-                <span class="tag">โภชนาการสัตว์เลี้ยง</span>
-                <span class="tag">การแปลผล Lab</span>
-                <span class="tag">ตรวจสุขภาพเชิงป้องกัน</span>
+        <section>
+            <h2>🌟 หมอช่วยดูแลอะไรได้บ้าง?</h2>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <i class="fa-solid fa-stethoscope"></i>
+                    <h3>รักษาโรคทั่วไป</h3>
+                    <p>วินิจฉัยโรคระบบภายในและโรคเรื้อรัง</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-scissors"></i>
+                    <h3>ผ่าตัดทำหมัน</h3>
+                    <p>และศัลยกรรมเนื้อเยื่ออ่อนด้วยเทคนิคพิเศษ</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    <h3>ดูแลเคสฉุกเฉิน</h3>
+                    <p>การจัดการเคสวิกฤต (ICU) ตลอด 24 ชม.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-shield-cat"></i>
+                    <h3>วางแผนสุขภาพ</h3>
+                    <p>วัคซีน โภชนาการ และการป้องกันโรค</p>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="info-card">
-            <h2>🏥 ประวัติการทำงาน</h2>
+        <section>
+            <div class="quote">
+                "ดูแลสมาชิกสี่ขาของท่าน ด้วยมาตรฐานและความรักเสมือนครอบครัว"
+            </div>
+        </section>
+
+        <section>
+            <h2>🎓 เส้นทางสู่ความเชี่ยวชาญ</h2>
+            <div class="edu-item">ปริญญาตรีสัตวแพทยศาสตรบัณฑิต (DVM)</div>
+            <div class="edu-item">ประกาศนียบัตรบัณฑิตทางศัลยกรรมสัตว์เล็ก</div>
+            <div class="edu-item">อบรมการตรวจ Echocardiography รุ่นปี 2024</div>
+        </section>
+
+        <section>
+            <h2>📞 ติดต่อหมอวรดา</h2>
             <ul class="contact-list">
-                <li>
-                    <span>📍</span>
-                    <div><span class="highlight-text">2019 - ปัจจุบัน:</span> สัตวแพทย์อาวุโส แผนกศัลยกรรม</div>
-                </li>
-                <li>
-                    <span>📍</span>
-                    <div><span class="highlight-text">2017 - 2019:</span> สัตวแพทย์ประจำบ้าน (Resident)</div>
-                </li>
+                <li><i class="fa-solid fa-hospital"></i> โรงพยาบาลสัตว์พรีเมียร์</li>
+                <li><i class="fa-brands fa-line"></i> @DrWorada_Vet</li>
+                <li><i class="fa-solid fa-calendar-days"></i> จันทร์ - ศุกร์ (09:00 - 18:00)</li>
             </ul>
-        </div>
+        </section>
     </div>
 
     <footer>
-        ออกแบบเพื่อดูแลเพื่อนสี่ขาโดยคุณหมอวรดา <br>
-        &copy; 2026 Veterinary Professional Profile
+        <p>&copy; 2026 หมอวรดาผู้ใจดี ทุกก้าวคือความใส่ใจ🐾</p>
     </footer>
 
 </body>
